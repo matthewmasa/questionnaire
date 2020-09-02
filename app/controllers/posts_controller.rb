@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts =Post.all
+    @posts =Post.includes(:user)
   end
 
   def new
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   def create
     @post=Post.new(post_params)
     if @post.save
-      redirect_to post_path, notice: "#投稿#{@post}を投稿しました。"
+      redirect_to post_path, notice: "投稿#{@post}を投稿しました。"
     else
       render :new
     end
