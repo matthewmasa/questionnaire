@@ -1,0 +1,11 @@
+<h1>ユーザー登録</h1>
+
+=form_with model: [:admin, @user], local: true do |f|
+.form-group
+ =f.label :name, '名前'
+ =f.text_field :name, class: 'form-control'
+.form-group
+ =f.label :email,'Eメールアドレス'
+ =f.text_field :email, class: 'form-control'
+.form-check
+ =f.label :admin, class: 'form-check-label' do
