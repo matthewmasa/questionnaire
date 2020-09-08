@@ -1,8 +1,7 @@
-<h1>ユーザー登録</h1>
-.nav.justify-content-end
-=link_to '一覧', admin_users_path, class: 'nav-link'
-
-=render partial: 'form', locals: {user: @user}
+.if user.errors.present?
+ u1#error_explanation
+  user.errors.full_messages.each do |message|
+   li=message
 
 =form_with model: [:admin, @user], local: true do |f|
 .form-group
