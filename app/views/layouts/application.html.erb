@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>QuestionnaireBbs</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
   <body>
-    <%= yield %>
+    .app-title.navbar-expend-md.navber-light.bg-light
+     .navber-brand Post
+
+  ul.navbar-nav.ml-auto
+   -if current_user
+    li.nav-item= link_to 'タスク一覧', task_path, class: 'nav-link'
+    li.nav-item= link_to 'ユーザー一覧',admin_user_path, class: 'nav-link'
+    li.nav-item= link_to 'ログアウト',logout_path, method: :delete, class: 'nav-link'
+   -else
+    li.nav-item= link_to ''login_path, class: 'nav-link'
+  .container
+   -if flash.notice.present?
+    .alert.alert-success= flash.notice
+     =yield
   </body>
 </html>
